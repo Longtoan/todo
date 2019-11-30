@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h3>Thêm</h3>
+      <form action="/todolist/add" method="POST">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="title" required>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" name="description" required>
+        </div>
+        <button type="submit" name="action" class="btn btn-primary">Submit</button>
+
+      </form>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% todolist.forEach((todo)=>{ %>
+          <tr>
+            <td><%= todo.title %></td>
+            <td><%= todo.description %></td>
+            <td><a href="/todolist/destroy/<%=todo.id%>">Delete</a> </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
